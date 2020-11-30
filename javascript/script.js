@@ -2,7 +2,7 @@ Update_Playable = function (){
 	var playable_list = [];
 	this.Plateau.forEach(function(col, index) {
 		if (col[0] == 0){
-			playable_list.push(index)
+			playable_list.push(index);
 		}
 	}
 	this.Playable_Colonne = playable_list;
