@@ -1,2 +1,3 @@
 # hugobarral.github.io
-Personnal site sources
+
+Javascript project in group
