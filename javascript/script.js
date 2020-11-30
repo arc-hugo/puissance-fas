@@ -1,4 +1,6 @@
-Update_Playable = function (){
+import "package.js"
+
+Plateau.prototype.Update_Playable = function (){
 	var playable_list = [];
 	this.Plateau.forEach(function(col, index) {
 		if (col[0] == 0){
@@ -8,7 +10,7 @@ Update_Playable = function (){
 	this.Playable_Colonne = playable_list;
 }
 
-Update_Colonne = function (colonne){
+Plateau.prototype.Update_Colonne = function (colonne){
 	let i = 0;
 	colonne = this.Plateau[colonne];
 	while (i < this.size_y && colonne[i] != 0 && colonne[i+1] == 0){
@@ -17,19 +19,19 @@ Update_Colonne = function (colonne){
 	}
 }
 
-Check_Ligne = function (){
+Plateau.prototype.Check_Ligne = function (ligne, colonne){
 
 }
 
-Check_Colonne = function (){
+Plateau.prototype.Check_Colonne = function (ligne, colonne){
 	this
 }
 
-Check_Diagonale = function (){
+Plateau.prototype.Check_Diagonale = function (ligne, colonne){
 	
 }
 
-State_Plateau = function (){
+Plateau.prototype.State_Plateau = function (){
 	var state;
 	if (this.Playable_Colonne.length < 1){
 		state = "Egalité"
@@ -49,7 +51,7 @@ State_Plateau = function (){
 	return state;
 }
 
-Play_Plateau = function (colonne, ID_Player){
+Plateau.prototype.Play_Plateau = function (colonne, ID_Player){
 	if (this.Playable_Colonne.includes(colonne)){
 		this.Plateau[colonne][0] = ID_Player;
 	}
