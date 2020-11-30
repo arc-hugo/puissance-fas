@@ -8,27 +8,45 @@ Update_Playable = function (){
 	this.Playable_Colonne = playable_list;
 }
 
-Update_Plateau = function (colonne){
+Update_Colonne = function (colonne){
 	let i = 0;
 	colonne = this.Plateau[colonne];
-	while ((colonne[i] != 0 && colonne[i+1] == 0) || i >= this.size_x){
+	while (i < this.size_y && colonne[i] != 0 && colonne[i+1] == 0){
 		colonne[i+1] = colonne[i];
 		colonne[i] = 0;
 	}
+}
 
-	for (let row=0; row < this.size_x; row++){
-		this.Plateau[row]
-		for (col of this.Plateau){
-			if (col[row] != 0 && col[row+1] == 0){
-				col[row+1] = col[row];
-				col[row] = 0;
-			}
-		}
-	}
+Check_Ligne = function (){
+
+}
+
+Check_Colonne = function (){
+	this
+}
+
+Check_Diagonale = function (){
+	
 }
 
 State_Plateau = function (){
-
+	var state;
+	if (this.Playable_Colonne.length < 1){
+		state = "Egalité"
+	}
+	else if (Check_Ligne() > 0){
+		state = Check_Ligne();
+	}
+	else if (Check_Colonne() > 0){
+		state = Check_Colonne();
+	}
+	else if (Check_Diagonale() > 0){
+		state = Check_Diagonale();
+	}
+	else {
+		state = "En cours"
+	}
+	return state;
 }
 
 Play_Plateau = function (colonne, ID_Player){
@@ -37,5 +55,4 @@ Play_Plateau = function (colonne, ID_Player){
 	}
 	this.Update_Playable;
 	this.Update_Plateau;
-
 }
