@@ -4,10 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puissance 4</title>
-    <style src="css/styles.css"></style>
+    <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="javascript/game.js"></script>
 </head>
 <body>
-    
+    <div>
+        <input type="text" name="player_name" id="palyer_name"><button>Submit</button></br>
+        Player 1 : <select name="player_1" id="player_1">
+        </select></br>
+        Player 2 : <select name="player_2" id="player_2">
+        </select></br>
+    </div>
+    <main>
+        <table id="board">
+            <thead>
+                <td id="select_col1"><img src="images/down_arrow.svg" alt="select_col1"></td>
+                <td id="select_col2"><img src="images/down_arrow.svg" alt="select_col2"></td>
+                <td id="select_col3"><img src="images/down_arrow.svg" alt="select_col3"></td>
+                <td id="select_col4"><img src="images/down_arrow.svg" alt="select_col4"></td>
+                <td id="select_col5"><img src="images/down_arrow.svg" alt="select_col5"></td>
+                <td id="select_col6"><img src="images/down_arrow.svg" alt="select_col6"></td>
+                <td id="select_col7"><img src="images/down_arrow.svg" alt="select_col7"></td>
+            </thead>
+            <tbody>
+                <tr id="row1" class="row">
+                    <td id="row1_col1" class="cell"> </td>
+                    <td id="row1_col2" class="cell"> </td>
+                    <td id="row1_col3" class="cell"> </td>
+                    <td id="row1_col4" class="cell"> </td>
+                    <td id="row1_col5" class="cell"> </td>
+                    <td id="row1_col6" class="cell"> </td>
+                    <td id="row1_col7" class="cell"> </td>
+                </tr>
+                <tr id="row2" class="row">
+                    <td id="row2_col1" class="cell"> </td>
+                    <td id="row2_col2" class="cell"> </td>
+                    <td id="row2_col3" class="cell"> </td>
+                    <td id="row2_col4" class="cell"> </td>
+                    <td id="row2_col5" class="cell"> </td>
+                    <td id="row2_col6" class="cell"> </td>
+                    <td id="row2_col7" class="cell"> </td>
+                </tr>
+                <tr id="row3" class="row">
+                    <td id="row3_col1" class="cell"> </td>
+                    <td id="row3_col2" class="cell"> </td>
+                    <td id="row3_col3" class="cell"> </td>
+                    <td id="row3_col4" class="cell"> </td>
+                    <td id="row3_col5" class="cell"> </td>
+                    <td id="row3_col6" class="cell"> </td>
+                    <td id="row3_col7" class="cell"> </td>
+                </tr>
+                <tr id="row4" class="row">
+                    <td id="row4_col1" class="cell"> </td>
+                    <td id="row4_col2" class="cell"> </td>
+                    <td id="row4_col3" class="cell"> </td>
+                    <td id="row4_col4" class="cell"> </td>
+                    <td id="row4_col5" class="cell"> </td>
+                    <td id="row4_col6" class="cell"> </td>
+                    <td id="row4_col7" class="cell"> </td>
+                </tr>
+                <tr id="row5" class="row">
+                    <td id="row5_col1" class="cell"> </td>
+                    <td id="row5_col2" class="cell"> </td>
+                    <td id="row5_col3" class="cell"> </td>
+                    <td id="row5_col4" class="cell"> </td>
+                    <td id="row5_col5" class="cell"> </td>
+                    <td id="row5_col6" class="cell"> </td>
+                    <td id="row5_col7" class="cell"> </td>
+                </tr>
+                <tr id="row6" class="row">
+                    <td id="row5_col1" class="cell"> </td>
+                    <td id="row5_col2" class="cell"> </td>
+                    <td id="row5_col3" class="cell"> </td>
+                    <td id="row5_col4" class="cell"> </td>
+                    <td id="row5_col5" class="cell"> </td>
+                    <td id="row5_col6" class="cell"> </td>
+                    <td id="row5_col7" class="cell"> </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer>
+        <p> by Hugo Barral, Loic Briand, Thomas Hoger.</p>
+    </footer>
 </body>
 </html>
