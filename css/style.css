@@ -1,0 +1,10 @@
+table {
+    empty-cells : show;
+    border-collapse: collapse;
+}
+
+.cell {
+    border: 5px solid black;
+    height: 50px;
+    width: 50px;
+}
