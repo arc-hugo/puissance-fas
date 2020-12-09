@@ -8,9 +8,9 @@
  </defs>
  <g>
   <title>background</title>
-  <rect fill="url(#svg_4)" id="canvas_background" height="52" width="52" y="-1" x="-1"/>
+  <rect fill="none" id="canvas_background" height="52" width="52" y="-1" x="-1"/>
   <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
-   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+   <rect fill="none" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
   </g>
  </g>
  <g>
