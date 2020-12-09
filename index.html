@@ -8,14 +8,15 @@
     <script type="text/javascript" src="javascript/script.js"></script>
 </head>
 <body>
-    <div>
+    <div class="player_section">
         <input type="text" name="player_name" id="palyer_name"><button>Submit</button></br>
         Player 1 : <select name="player_1" id="player_1">
         </select></br>
         Player 2 : <select name="player_2" id="player_2">
         </select></br>
     </div>
-    <main>
+
+    <div class="board_section">
         <table id="board">
             <thead>
                 <td class = "arrow_container" id="select_col1"><img class = "arrow_img" src="images/down_arrow.svg" alt="select_col1"></td>
@@ -87,9 +88,11 @@
                 </tr>
             </tbody>
         </table>
-    </main>
+    </div>
+
     <footer>
-        <p> by Hugo Barral, Loic Briand, Thomas Hoger.</p>
+        <div> by Hugo Barral, Loic Briand, Thomas Hoger.</div>
     </footer>
+
 </body>
 </html>
