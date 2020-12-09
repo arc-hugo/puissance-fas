@@ -27,9 +27,9 @@ main{
 }
 
 @keyframes titre {
-  0%   {transform: rotateZ(0deg)}
-  50%  {transform: rotateZ(10deg)}
-  100% {transform: rotateZ(-10deg)}
+  0%   {padding: 0px 0px 0px 0px}
+  50%  {padding: 0px 20px 0px 0px}
+  100% {padding: 0px 0px 0px 20px}
 }
 
 h1{
@@ -41,7 +41,7 @@ h1{
     align-items: center;
     text-decoration: underline 2px;
     animation-name: titre;
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-direction: alternate-reverse;  
 }
