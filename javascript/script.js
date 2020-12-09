@@ -1,2 +1,4 @@
-import "platteau.js"
+import "./plateau.js"
+import "./joueur.js"
+import "./partie.js"
 
