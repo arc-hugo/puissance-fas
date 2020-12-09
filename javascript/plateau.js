@@ -26,10 +26,36 @@ Plateau.prototype.Update_Colonne = function (colonne){
 }
 
 Plateau.prototype.Check_Ligne = function (ligne, colonne, couleur){
+	win = false;
+
+	if (this.Plateau[y][x+3] === couleur && this.Plateau[y][x+2] === couleur && this.Plateau[y][x+1] === couleur ){ 			//gauche
+		win = true;
+	} else if (this.Plateau[y][x-1] === couleur && this.Plateau[y][x+2] === couleur && this.Plateau[y][x+1] === couleur ){		// milieu gauche
+		win = true;
+	} else if (this.Plateau[y][x-1] === couleur && this.Plateau[y][x-2] === couleur && this.Plateau[y][x+1] === couleur ){		// milieu droite
+		win = true;
+	} else if (this.Plateau[y][x-1] === couleur && this.Plateau[y][x-2] === couleur && this.Plateau[y][x-3] === couleur ){		// droite
+		win = true;
+	}
+	return win;
 }
 
 Plateau.prototype.Check_Colonne = function (ligne, colonne, couleur){
-    win = false;
+    
+	
+
+	if (this.Plateau[y+3][x] === couleur && this.Plateau[y+2][x] === couleur && this.Plateau[y+1][x] === couleur ){    		//bas 
+		win = true;
+	} else if (this.Plateau[y-1][x] === couleur && this.Plateau[y+2][x] === couleur && this.Plateau[y+1][x] === couleur ){    		//mileu bas
+		win = true;
+	} else if (this.Plateau[y-1][x] === couleur && this.Plateau[y-2][x] === couleur && this.Plateau[y+1][x] === couleur ){    		// mileu haut
+		win = true;
+	} else if (this.Plateau[y-1][x] === couleur && this.Plateau[y-2][x] === couleur && this.Plateau[y-3][x] === couleur ){    		// haut 
+		win = true;
+	} else {
+		win =false;
+	}
+	return win;
 }
 
 Plateau.prototype.Check_Diagonale = function (ligne, colonne, couleur){
