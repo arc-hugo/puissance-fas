@@ -1,133 +1,63 @@
 /*
 Classe du plateau de jeu
-- matrice : matrice du plateau, contient l'état de chaque cellules
+- playerOneTokens : liste des coordonnées de chaque jetons du joueur 1
+- playerTwoTokens : liste des coordonnées de chaque jetons du joueur 2
 - playable_column : liste des colonnes non remplies du plateau
 - size_x : nombre de colonnes du plateau
 - size_y : nombre de lignes du plateau
 */
 class Plateau {
-	constructor(matrice,playable_column,size_x,size_y)
-	this.matrice = matrice;
-	this.playable_column = playable_column;
-	this.size_x = size_x;
-	this.size_y = size_y;
-}
-
-// Renvoi l'état d'une colonne
-Plateau.prototype.getColone = function (y) {
-    return this.matrice.map(i => i[y]);
-}
-
-// Renvoi la liste des colonnes jouable
-Plateau.prototype.getPlayableColumn = function () {
-    return this.playable_column;
-}
-
-// Met à jour la liste des colonne jouables
-Plateau.prototype.Update_Playable = function (){
-	var playable_list = [];
-	for (let index = 0; index < size_x, index++) {
-        if (this.getColone(index)[0] === 0) {
-            playable_list.push(index);
-        }
+	constructor(x,y)
+    this.playerOneTokens = []
+    this.playerTwoTokens = []
+	this.size_x = x;
+    this.size_y = y;
+    this.playableColumn = []
+    for (let index = 0; index < size_x; index++) {
+        this.playableColumn.push(index);
     }
-	this.playable_column = playable_list;
 }
 
-// Met à jour une colonne du plateau en ajoutant un jeton
-Plateau.prototype.Update_Colonne = function (y, couleur){
-	let i = 0;
-	colonne = this.getColone(y);
-	while (i < this.size_y-1 && colonne[i+1] == 0){
-        i = i + 1
+// Renvoi les jetons posés par le joueur 1
+Plateau.prototype.getPlayerOneTokens = () => {
+    return this.playerOneTokens;
+}
+
+// Renvoi les jetons posés par le joueur 2
+Plateau.prototype.getPlayerTwoTokens = () => {
+    return this.playerTwoTokens;
+}
+
+// Renvoi les colonnes non remplies
+Plateau.prototype.getPlayableColumn = () => {
+    return this.playableColumn;
+}
+
+// Met à jour les colonnes jouables
+Plateau.prototype.updatePlayable = () => {
+    // Colonnes remplies par un token
+    let upToken = this.getPlayerOneTokens()
+                .filter(tok => tok.y === 0)
+                .concat(this.getPlayerTwoTokens().filter(tok => tok.y === 0))
+                .map(({x}) => x);
+    // On retire les colonnes filtrées de la liste des colonnes jouable
+    this.playableColumn = this.getPlayableColumn().filter(x => !upToken.includes(x));
+}
+
+/*
+Ajoute le jeton d'un joueur sur le plateau
+- x : coordonnées de la colonne de placement
+- couleur : couleur du jeton à placer
+*/
+Plateau.prototype.addToken = (x, couleur) => {
+    const height = this.getPlayerOneTokens()
+                    .concat(this.getPlayerOneTokens())
+                    .filter(tok => tok.x === x)
+                    .map(({y}) => y)
+                    .sort()[0];
+    if (couleur === 1) {
+        this.playerOneTokens.push({x: x, y: height-1});
+    } else {
+        this.playerTwoTokens.push({x: x, y: height-1});
     }
-    this.matrice[i][colonne] = couleur;
-}
-
-Plateau.prototype.Check_Ligne = function (ligne, colonne, couleur){
-	win = false;
-
-	if (this.Plateau[y][x+3] === couleur && this.Plateau[y][x+2] === couleur && this.Plateau[y][x+1] === couleur ){ 			//gauche
-		win = true;
-	} else if (this.Plateau[y][x-1] === couleur && this.Plateau[y][x+2] === couleur && this.Plateau[y][x+1] === couleur ){		// milieu gauche
-		win = true;
-	} else if (this.Plateau[y][x-1] === couleur && this.Plateau[y][x-2] === couleur && this.Plateau[y][x+1] === couleur ){		// milieu droite
-		win = true;
-	} else if (this.Plateau[y][x-1] === couleur && this.Plateau[y][x-2] === couleur && this.Plateau[y][x-3] === couleur ){		// droite
-		win = true;
-	}
-	return win;
-}
-
-Plateau.prototype.Check_Colonne = function (ligne, colonne, couleur){
-    
-	
-
-	if (this.Plateau[y+3][x] === couleur && this.Plateau[y+2][x] === couleur && this.Plateau[y+1][x] === couleur ){    		//bas 
-		win = true;
-	} else if (this.Plateau[y-1][x] === couleur && this.Plateau[y+2][x] === couleur && this.Plateau[y+1][x] === couleur ){    		//mileu bas
-		win = true;
-	} else if (this.Plateau[y-1][x] === couleur && this.Plateau[y-2][x] === couleur && this.Plateau[y+1][x] === couleur ){    		// mileu haut
-		win = true;
-	} else if (this.Plateau[y-1][x] === couleur && this.Plateau[y-2][x] === couleur && this.Plateau[y-3][x] === couleur ){    		// haut 
-		win = true;
-	} else {
-		win =false;
-	}
-	return win;
-}
-
-Plateau.prototype.Check_Diagonale = function (ligne, colonne, couleur){
-	win = false;
-
-	if (this.matrice[y-3][x+3] === couleur && this.matrice[y-2][x+2] === couleur && this.matrice[y-1][x+1] === couleur ){ 			//bas droite	
-		win = true;
-	} else if (this.matrice[y+1][x-1] === couleur && this.matrice[y-2][x+2] === couleur && this.matrice[y-1][x+1] === couleur ){		// milieu droite
-		win = true;
-	} else if (this.matrice[y+1][x-1] === couleur && this.matrice[y-2][x+2] === couleur && this.matrice[y-1][x+1] === couleur ){		// milieu gauche
-		win = true;
-	} else if (this.matrice[y+1][x-1] === couleur && this.matrice[y+2][x-2] === couleur && this.matrice[y+3][x-3] === couleur ){		// haut gauche
-		win = true;
-	}
-
-	else if (this.matrice[y+3][x+3] === couleur && this.matrice[y+2][x+2] === couleur && this.matrice[y+1][x+1] === couleur ){    		//bas gauche
-		win = true;
-	} else if (this.matrice[y-1][x-1] === couleur && this.matrice[y+2][x+2] === couleur && this.matrice[y+1][x+1] === couleur ){    		//mileu gauche
-		win = true;
-	} else if (this.matrice[y-1][x-1] === couleur && this.matrice[y-2][x-2] === couleur && this.matrice[y+1][x+1] === couleur ){    		// mileu droite
-		win = true;
-	} else if (this.matrice[y-1][x-1] === couleur && this.matrice[y-2][x-2] === couleur && this.matrice[y-3][x-3] === couleur ){    		// haut droite
-		win = true;
-	} else {
-		win =false;
-	}
-	return win;
-}
-
-Plateau.prototype.State_Plateau = function (){
-	var state;
-	if (this.playable_column.length < 1){
-		state = "Egalité"
-	}
-	else if (Check_Ligne() > 0){
-		state = Check_Ligne();
-	}
-	else if (Check_Colonne() > 0){
-		state = Check_Colonne();
-	}
-	else if (Check_Diagonale() > 0){
-		state = Check_Diagonale();
-	}
-	else {
-		state = "En cours"
-	}
-	return state;
-}
-
-Plateau.prototype.Play_Plateau = function (colonne, ID_Player){
-	if (this.playable_column.includes(colonne)){
-		this.matrice[colonne][0] = ID_Player;
-	}
-	this.Update_Playable;
-	this.Update_Plateau;
 }
