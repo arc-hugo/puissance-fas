@@ -1,7 +1,6 @@
 class Joueur  {
-	constructor(Id,Nom,Score)
-	this.Id = Id;
-	this.Nom = Nom;
-	this.Score = 0;
-	
+	constructor(id,nom)
+	this.id = id;
+	this.nom = nom;
+	this.score = 0;
 }
