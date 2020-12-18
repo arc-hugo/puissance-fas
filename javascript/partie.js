@@ -32,7 +32,7 @@ Partie.prototype.checkWin = (x, y) => {
             if (select[index] === select[index-1]+1) {
                 count = count + 1;
             } else {
-                count = 1
+                count = 1;
             }
         }
     }
@@ -42,7 +42,7 @@ Partie.prototype.checkWin = (x, y) => {
             if (select[index] === select[index-1]+1) {
                 count = count + 1;
             } else {
-                count = 1
+                count = 1;
             }
         }
     }
@@ -52,7 +52,7 @@ Partie.prototype.checkWin = (x, y) => {
             if (select[index] === select[index-1]+1) {
                 count = count + 1;
             } else {
-                count = 1
+                count = 1;
             }
         }
     }
@@ -62,7 +62,7 @@ Partie.prototype.checkWin = (x, y) => {
             if (select[index] === select[index-1]+1) {
                 count = count + 1;
             } else {
-                count = 1
+                count = 1;
             }
         }
     }
