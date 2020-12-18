@@ -28,12 +28,12 @@ class Plateau {
     // Met à jour les colonnes jouables
     updatePlayable = () => {
         // Colonnes remplies par un token
-        let upToken = this.getPlayerOneTokens()
+        let upToken = this.playerOneTokens
                     .filter(tok => tok.y === 0)
-                    .concat(this.getPlayerTwoTokens().filter(tok => tok.y === 0))
+                    .concat(this.playerTwoTokens.filter(tok => tok.y === 0))
                     .map(({x}) => x);
         // On retire les colonnes filtrées de la liste des colonnes jouable
-        this.playableColumn = this.getPlayableColumn().filter(x => !upToken.includes(x));
+        this.playableColumn = this.playableColumn.filter(x => !upToken.includes(x));
     }
     /*
     Ajoute le jeton d'un joueur sur le plateau
@@ -41,15 +41,23 @@ class Plateau {
     - couleur : couleur du jeton à placer
     */
     addToken = (x, couleur) => {
-        const height = this.getPlayerOneTokens()
-                        .concat(this.getPlayerTwoTokens())
+        const height = this.playerOneTokens
+                        .concat(this.playerTwoTokens)
                         .filter(tok => tok.x === x)
                         .map(({y}) => y)
                         .sort()[0];
-        if (couleur === 1) {
-            this.playerOneTokens.push({x: x, y: height-1});
+        if (height === undefined) {
+            if (couleur === 1) {
+                this.playerOneTokens.push({x: x, y: this.size_y-1});
+            } else {
+                this.playerTwoTokens.push({x: x, y: this.size_y-1});
+            }
         } else {
-            this.playerTwoTokens.push({x: x, y: height-1});
+            if (couleur === 1) {
+                this.playerOneTokens.push({x: x, y: height-1});
+            } else {
+                this.playerTwoTokens.push({x: x, y: height-1});
+            }   
         }
     }
 }

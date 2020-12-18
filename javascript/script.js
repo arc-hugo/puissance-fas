@@ -13,11 +13,7 @@ function launch() {
         console.error("Entrer un joueur");
         document.getElementById("playerInput").focus();
     } else {
-        console.log(player_1.text);
-        console.log(player_2.text);
         partie = new Partie(7,6);
-        console.log(partie.plateau.playableColumn);
-        console.log(partie.checkWin(0,0))
     }
 }
 

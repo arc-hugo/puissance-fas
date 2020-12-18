@@ -12,8 +12,9 @@ class Partie {
         Joue le jeton du joueur actuel dans la colonne désignée
         - x : colonne choisie 
     */
-    play = (x) => {
-        this.plateau.addToken(x, currentPlayer);
+    updatePlateau = (x) => {
+        this.plateau.addToken(x, this.currentPlayer);
+        this.plateau.updatePlayable();
         if (this.currentPlayer === 1) {
             this.currentPlayer = 2;
         } else {
@@ -27,10 +28,11 @@ class Partie {
         - y : coordonnées de la ligne du jeton à vérifier
     */
     checkWin = (x, y) => {
+        let tokens;
         if (this.currentPlayer === 1) {
-            const tokens = this.plateau.getPlayerOneTokens();
+            tokens = this.plateau.playerOneTokens;
         } else {
-            const tokens = this.plateau.getPlayerTwoTokens();
+            tokens = this.plateau.playerTwoTokens;
         }
         
         // Récupération des lignes, colonnes et diagonales du jeton posé
