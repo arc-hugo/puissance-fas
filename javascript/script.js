@@ -24,7 +24,7 @@ function launch() {
 /*
 Ajoute l'image du jeton
 */
-function uptadeToken () {
+function uptadeToken() {
     playerOne=this.playerOneTokens;
 	playerTwo=this.playerTwoTokens;
 	var jetonRouge = "./images/jeton_rouge.svg";
@@ -55,6 +55,12 @@ function uptadeToken () {
 function arrowUpdate(){
 	fleches = document.getElementsByClassName("arrow_img");
 	fleches.forEach(function(fleche){
+		if (partie.currentPlayer == 1){
+			fleche.src = "down_arrow_rouge";
+		}
+		else {
+			fleche.src = "down_arrow_jaune";
+		}
 	  	fleche.disabled = true;
 	}
 
