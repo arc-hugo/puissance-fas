@@ -36,7 +36,8 @@ Partie.prototype.checkWin = (x, y) => {
             }
         }
     }
-    if (vertical.length >= 4 && win === 0) {
+    if (vertical.length >= 4 && count !== 4) {
+        count = 1;
         let select = vertical.sort((a,b) => a.y - b.y).map(({y}) => y);
         for (let index = 0; index < select.length && count < 4; index++) {
             if (select[index] === select[index-1]+1) {
@@ -46,7 +47,8 @@ Partie.prototype.checkWin = (x, y) => {
             }
         }
     }
-    if (diag1.length >= 4 && win === 0) {
+    if (diag1.length >= 4 && count !== 4) {
+        count = 1;
         let select = diag1.sort((a,b) => a.x - b.x).map(({x}) => x);
         for (let index = 0; index < select.length && count < 4; index++) {
             if (select[index] === select[index-1]+1) {
@@ -56,7 +58,8 @@ Partie.prototype.checkWin = (x, y) => {
             }
         }
     }
-    if (diag2.length >= 4 && win === 0) {
+    if (diag2.length >= 4 && count !== 4) {
+        count = 1;
         let select = diag2.sort((a,b) => a.x - b.x).map(({x}) => x);
         for (let index = 0; index < select.length && count < 4; index++) {
             if (select[index] === select[index-1]+1) {
