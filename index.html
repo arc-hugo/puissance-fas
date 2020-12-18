@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puissance 4</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="javascript/joueur.js"></script>
+    <script src="javascript/plateau.js"></script>
+    <script src="javascript/partie.js"></script>
     <script type="text/javascript" src="javascript/script.js"></script>
 </head>
 <body>
@@ -26,10 +29,10 @@
                 <tbody>
                     <tr id="row1" class="row">
                         <td id="row1_col1" class="cell"> 
-                        	<img class="jeton_img" src="images/jeton_rouge.svg">
+                        	<!-- <img class="jeton_img" src="images/jeton_rouge.svg"> -->
                         </td>
                         <td id="row1_col2" class="cell">
-                        	<img class="jeton_img" src="images/jeton_jaune.svg">
+                        	<!-- <img class="jeton_img" src="images/jeton_jaune.svg"> -->
                         </td>
                         <td id="row1_col3" class="cell"> </td>
                         <td id="row1_col4" class="cell"> </td>
@@ -104,22 +107,11 @@
             <div class="champ">Player 2 : <select name="player_2" id="player_2"></select></div>
         </div>
 
-        <div class="start_button"><button>Lancer la partie</button></div>
+        <div class="start_button"><button onclick="">Lancer la partie</button></div>
 
         <div class="player_result">
             <div class="result_title">Résultats</div>
-            <ol>
-                <li>Huitre</li>
-                <li>Poulet</li>
-                <li>Dinde</li>
-                <li>Huitre</li>
-                <li>Huitre</li>
-                <li>Huitre</li>
-                <li>Huitre</li>
-                <li>Huitre</li>
-                <li>Huitre</li>
-                <li>Huitre</li>
-                <li>Huitre</li>
+            <ol id="result_list">
             </ol>
         </div>
     </div>
