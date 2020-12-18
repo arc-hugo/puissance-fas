@@ -22,7 +22,7 @@ function launch() {
                const arrow = document.createElement("td");
                arrow.id = "select_col"+String(i);
                arrow.className = "arrow_container";
-               /*arrow.addEventListener("click", play(i));*/
+               arrow.hidden = "true";
        
                arrow_img = document.createElement("img");
                arrow_img.src = "./images/down_arrow.svg";
@@ -32,6 +32,11 @@ function launch() {
            }
        });
     }
+
+    fleches = document.getElementsByClassName("arrow_img");
+    fleches.forEach.call(function(fleche){
+	  	fleche.addEventListener("click", play(i));
+	});
 }
 
 function play(x){
