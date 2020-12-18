@@ -26,20 +26,38 @@ Ajoute l'image du jeton
 function uptadeToken () {
     playerOne=this.playerOneTokens;
 	playerTwo=this.playerTwoTokens;
-	var jetonRouge = "images/jeton_rouge.svg";
-	var jetonJaune = "images/jeton_jaune.svg";
-	for (let i = 0; i < playerOne.length; i++){
-		ligne = playerOne[i].x;
+	var jetonRouge = "./images/jeton_rouge.svg";
+	var jetonJaune = "./images/jeton_jaune.svg";
+	for (let i = 0; i < playerOne.length  ){
+		ligne = playerOne[i].x ;
 		colonne = playerOne[i].y;
-		var image = document.getElementbyId("row"+String(ligne+1)+"_col"+String(colonne+1));
-		image.innerHTML = '';
-		image.appendChild(jetonRouge);
-    }
-	for (let i = 0; i < playerTwo.length; i++){
-		ligne = playerTwo[i].x;
-		colonne = playerTwo[i].y;
-		var image = document.getElementbyId("row"+String(ligne+1)+"_col"+String(colonne+1));
-		image.innerHTML = '';
-		image.appendChild(jetonJaune);
+		var td = document.getElementbyId("row"+String(ligne+1)+"_col"+String(colonne+1));
+        if (td.innerHTML != '') {
+            const image = document.createElement("img");
+            image.src = jetonRouge;
+            td.appendChild(image);
+        }
+		
+	}
+	for (let i = 0; i < playerTwo.length  ){
+		ligne = playerTwo[i].x 
+		colonne = playerTwo[i].y
+		var td = document.getElementbyId("row"+String(ligne+1)+"_col"+String(colonne+1));
+        if (td.innerHTML != '') {
+            const image = document.createElement("img");
+            image.src = jetonJaune;
+            td.appendChild(image);
+        }
 	}
 }
+
+function arrowUpdate(){
+	fleches = document.getElementsByClassName("arrow_img");
+	fleches.forEach(function(fleche){
+	  	fleche.disabled = true;
+	}
+
+	playable = partie.plateau.playableColumn;
+	playable.forEach(function(i){
+	  	fleches[i].disabled = false;
+	}

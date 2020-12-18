@@ -35,7 +35,6 @@ class Plateau {
         // On retire les colonnes filtrées de la liste des colonnes jouable
         this.playableColumn = this.getPlayableColumn().filter(x => !upToken.includes(x));
     }
-
     /*
     Ajoute le jeton d'un joueur sur le plateau
     - x : coordonnées de la colonne de placement
