@@ -17,14 +17,20 @@ function launch() {
         console.log(partie);
         /*<td class = "arrow_container" id="select_col1" hidden="true" onclick="play(0)"><img class = "arrow_img" alt="select_col1"></td>*/
         document.addEventListener("DOMContentLoaded", function() {
-            arrow_container = document.getElementById("arrow_list");
-            for (let i = 0; i < 7; i++) {
-                const arrow = document.createElement("td");
-                arrow.id = "select_col"+String(i);
-                arrow.addEventListener("click", play(i));
-                arrow_list.appendChild(arrow);
-            }
-        });
+            arrow_list = document.getElementById("arrow_list");
+           for (let i = 0; i < 7; i++) {
+               const arrow = document.createElement("td");
+               arrow.id = "select_col"+String(i);
+               arrow.className = "arrow_container";
+               /*arrow.addEventListener("click", play(i));*/
+       
+               arrow_img = document.createElement("img");
+               arrow_img.src = "./images/down_arrow.svg";
+               arrow_img.className = "arrow_img"
+               arrow.appendChild(arrow_img);
+               arrow_list.appendChild(arrow);
+           }
+       });
     }
 }
 
@@ -39,11 +45,9 @@ Ajoute l'image du jeton
 */
 function uptadeToken() {
     reset();
-    
-    let playerOne = partie.plateau.playerOneTokens;
-    let playerTwo = partie.plateau.playerTwoTokens;
-    let jetonRouge = "./images/jeton_rouge.svg";
-    let jetonJaune = "./images/jeton_jaune.svg";
+
+    const playerOne = partie.plateau.playerOneTokens;
+	const playerTwo = partie.plateau.playerTwoTokens;
     
     for (let i = 0; i < playerOne.length; i++){
         ligne = playerOne[i].x ;
@@ -51,8 +55,8 @@ function uptadeToken() {
         let td = document.getElementById("row"+String(ligne+1)+"_col"+String(colonne+1));
         if (td.innerHTML != '') {
             const image = document.createElement("img");
-            image.src = jetonRouge;
-            image.className = "jeton_img"
+            image.src = "./images/jeton_rouge.svg";
+            image.className = "jeton_img";
             td.appendChild(image);
         }
         
@@ -64,8 +68,8 @@ function uptadeToken() {
         let td = document.getElementById("row"+String(ligne+1)+"_col"+String(colonne+1));
         if (td.innerHTML != '') {
             const image = document.createElement("img");
-            image.src = jetonJaune;
-            image.className = "jeton_img"
+            image.src = "./images/jeton_jaune.svg";
+            image.className = "jeton_img";
             td.appendChild(image);
         }
     }
@@ -86,16 +90,16 @@ function arrowUpdate(){
     fleches = document.getElementsByClassName("arrow_img");
     Array.prototype.forEach.call(fleches, (fleche) => {
         if (partie.currentPlayer == 1){
-            fleche.src = "down_arrow_rouge";
-        }
-        else {
-            fleche.src = "down_arrow_jaune";
-        }
-        fleche.disabled = true;
+			fleche.src = "./images/down_arrow_rouge.svg";
+		}
+		else {
+			fleche.src = "./images/down_arrow_jaune.svg";
+		}
+	  	fleche.disabled = true;
     });
-    
-    playable = partie.plateau.playableColumn;
-    playable.forEach(function(i){
-        fleches[i].disabled = false;
-    });
+
+	playable = partie.plateau.playableColumn;
+	playable.forEach(function(i){
+	  	fleches[i].disabled = false;
+	});
 }

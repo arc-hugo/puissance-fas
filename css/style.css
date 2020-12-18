@@ -175,12 +175,11 @@ table {
 }
 
 #arrow_list {
-    height: 100px;
+    height: 80px;
 }
 
 .arrow_container{
-	height: 100px;
-    width: 100px; 
+    width: 105px; 
 }
 
 .arrow_img {
