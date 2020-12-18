@@ -62,10 +62,10 @@ function arrowUpdate(){
 			fleche.src = "down_arrow_jaune";
 		}
 	  	fleche.disabled = true;
-	}
+	});
 
 	playable = partie.plateau.playableColumn;
 	playable.forEach(function(i){
 	  	fleches[i].disabled = false;
-	}
+	});
 }
