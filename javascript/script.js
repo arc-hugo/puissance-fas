@@ -18,11 +18,7 @@ function launch() {
     }
 }
 
-<<<<<<< Updated upstream
-function play(x) {
-=======
 function play(x){
->>>>>>> Stashed changes
 	partie.updatePlateau(x);
 	uptadeToken();
 	arrowUpdate();
