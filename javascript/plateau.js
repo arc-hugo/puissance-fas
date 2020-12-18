@@ -67,7 +67,7 @@ Plateau.prototype.addToken = (x, couleur) => {
 Ajoute l'image du jeton
 */
 
-Plateau.prototype.uptadeToken = () => {
+Plateau.prototype.updateToken = () => {
 	playerOne=this.playerOneTokens;
 	playerTwo=this.playerTwoTokens;
 	var jetonRouge = "./images/jeton_rouge.svg";
