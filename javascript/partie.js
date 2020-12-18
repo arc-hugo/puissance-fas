@@ -1,8 +1,10 @@
 class Partie {
-	constructor(x, y)
-	this.plateau = new Plateau(x,y);
-	this.currentPlayer = 1;
-	this.win = 0;
+	constructor(x, y) {
+        this.plateau = new Plateau(x,y);
+	    this.currentPlayer = 1;
+	    this.win = 0;
+    }
+	
 }
 
 
