@@ -28,19 +28,42 @@ Partie.prototype.checkWin = (x, y) => {
 
     if (horizontal.length >= 4) {
         let select = horizontal.sort((a,b) => a.x - b.x).map(({x}) => x);
-    } else if (vertical.length >= 4) {
-        let select = vertical.sort((a,b) => a.y - b.y).map(({y}) => y);
-    } else if (diag1.length >= 4) {
-        let select = diag1.sort((a,b) => a.x - b.x).map(({x}) => x);
-    } else if (diag2.length >= 4) {
-        let select = diag2.sort((a,b) => a.x - b.x).map(({x}) => x);
+        for (let index = 0; index < select.length && count < 4; index++) {
+            if (select[index] === select[index-1]+1) {
+                count = count + 1;
+            } else {
+                count = 1
+            }
+        }
     }
-    
-    for (let index = 0; index < select.length && count < 4; index++) {
-        if (select[index] === select[index-1]+1) {
-            count = count + 1;
-        } else {
-            count = 1
+    if (vertical.length >= 4 && win === 0) {
+        let select = vertical.sort((a,b) => a.y - b.y).map(({y}) => y);
+        for (let index = 0; index < select.length && count < 4; index++) {
+            if (select[index] === select[index-1]+1) {
+                count = count + 1;
+            } else {
+                count = 1
+            }
+        }
+    }
+    if (diag1.length >= 4 && win === 0) {
+        let select = diag1.sort((a,b) => a.x - b.x).map(({x}) => x);
+        for (let index = 0; index < select.length && count < 4; index++) {
+            if (select[index] === select[index-1]+1) {
+                count = count + 1;
+            } else {
+                count = 1
+            }
+        }
+    }
+    if (diag2.length >= 4 && win === 0) {
+        let select = diag2.sort((a,b) => a.x - b.x).map(({x}) => x);
+        for (let index = 0; index < select.length && count < 4; index++) {
+            if (select[index] === select[index-1]+1) {
+                count = count + 1;
+            } else {
+                count = 1
+            }
         }
     }
 
