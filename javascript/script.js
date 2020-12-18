@@ -18,7 +18,11 @@ function launch() {
     }
 }
 
+<<<<<<< Updated upstream
 function play(x) {
+=======
+function play(x){
+>>>>>>> Stashed changes
 	partie.updatePlateau(x);
 	uptadeToken();
 	arrowUpdate();
@@ -89,3 +93,16 @@ function arrowUpdate(){
 	  	fleches[i].disabled = false;
 	});
 }
+
+/*<td class = "arrow_container" id="select_col1" hidden="true" onclick="play(0)"><img class = "arrow_img" alt="select_col1"></td>*/
+
+document.addEventListener("DOMContentLoaded", function() {
+ 	arrow_container = document.getElementById("arrow_list");
+	for (let i = 0; i < 7; i++) {
+        const arrow = document.createElement("td");
+        arrow.id = "select_col"+String(i);
+        arrow.hidden = "true";
+        arrow.addEventListener("click", play(i));
+        arrow_list.appendChild(arrow);
+    }
+});
