@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const arrow = document.createElement("td");
         arrow.id = "select_col"+String(i);
         arrow.className = "arrow_container";
-        arrow.hidden = "true";
+        /*arrow.hidden = "true";*/
 
         arrow_img = document.createElement("img");
         arrow_img.src = "./images/down_arrow.svg";
