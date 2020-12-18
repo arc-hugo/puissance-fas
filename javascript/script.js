@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function() {
         arrow.id = "select_col"+String(i);
         arrow.className = "arrow_container";
         arrow.hidden = "true";
-        /*arrow.addEventListener("click", play(i));*/
 
         arrow_img = document.createElement("img");
         arrow_img.src = "./images/down_arrow.svg";
@@ -33,6 +32,11 @@ function launch() {
         partie = new Partie(7,6);
         console.log(partie);
     }
+
+    fleches = document.getElementsByClassName("arrow_img");
+    fleches.forEach.call(function(fleche){
+	  	fleche.addEventListener("click", play(i));
+	});
 }
 
 function play(x){
