@@ -21,6 +21,12 @@ function launch() {
     }
 }
 
+function play(x){
+	partie.uptadePlateau(x);
+	uptadeToken();
+	arrowUpdate();
+}
+
 /*
 Ajoute l'image du jeton
 */
@@ -52,6 +58,9 @@ function uptadeToken() {
 	}
 }
 
+/*
+Modifie l'état des flèches
+*/
 function arrowUpdate(){
 	fleches = document.getElementsByClassName("arrow_img");
 	fleches.forEach(function(fleche){
