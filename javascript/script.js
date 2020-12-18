@@ -11,3 +11,14 @@ function launch() {
     console.log(player_1);
     console.log(player_2);
 }
+
+function arrowUpdate(){
+	fleches = document.getElementsByClassName("arrow_img");
+	fleches.forEach(function(fleche){
+	  	fleche.disabled = true;
+	}
+
+	playable = partie.plateau.playableColumn;
+	playable.forEach(function(i){
+	  	fleches[i].disabled = false;
+	}
