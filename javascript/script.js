@@ -1,6 +1,7 @@
 let player_1 = "";
 let player_2 = "";
 
+
 function launch() {
     let selected_1 = document.getElementById("player_1");
     let selected_2 = document.getElementById("player_2");
