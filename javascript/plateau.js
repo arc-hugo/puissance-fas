@@ -68,23 +68,30 @@ Ajoute l'image du jeton
 */
 
 Plateau.prototype.uptadeToken = () => {
-	playerOne=this.playerOneTokens
-	playerTwo=this.playerTwoTokens
-	var jetonRouge = "images/jeton_rouge.svg"
-	var jetonJaune = "images/jeton_jaune.svg"
+	playerOne=this.playerOneTokens;
+	playerTwo=this.playerTwoTokens;
+	var jetonRouge = "./images/jeton_rouge.svg";
+	var jetonJaune = "./images/jeton_jaune.svg";
 	for (let i = 0; i < playerOne.length  ){
-		ligne = playerOne[i].x 
-		colonne = playerOne[i].y
-		var image = document.getElementbyId("row"+String(ligne+1)+"_col"+String(colonne+1));
-		image.innerHTML = '';
-		image.appendChild(jetonRouge)
+		ligne = playerOne[i].x ;
+		colonne = playerOne[i].y;
+		var td = document.getElementbyId("row"+String(ligne+1)+"_col"+String(colonne+1));
+        if (td.innerHTML != '') {
+            const image = document.createElement("img");
+            image.src = jetonRouge;
+            td.appendChild(image);
+        }
+		
 	}
 	for (let i = 0; i < playerTwo.length  ){
 		ligne = playerTwo[i].x 
 		colonne = playerTwo[i].y
-		var image = document.getElementbyId("row"+String(ligne+1)+"_col"+String(colonne+1));
-		image.innerHTML = '';
-		image.appendChild(jetonJaune)
+		var td = document.getElementbyId("row"+String(ligne+1)+"_col"+String(colonne+1));
+        if (td.innerHTML != '') {
+            const image = document.createElement("img");
+            image.src = jetonJaune;
+            td.appendChild(image);
+        }
 	}
 
 }
