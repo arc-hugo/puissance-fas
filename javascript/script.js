@@ -51,7 +51,7 @@ function uptadeToken() {
 	for (let i = 0; i < playerTwo.length; i++){
 		ligne = playerTwo[i].x 
 		colonne = playerTwo[i].y
-		let td = document.getElementbyId("row"+String(ligne+1)+"_col"+String(colonne+1));
+		let td = document.getElementById("row"+String(ligne+1)+"_col"+String(colonne+1));
         if (td.innerHTML != '') {
             const image = document.createElement("img");
             image.src = jetonJaune;
