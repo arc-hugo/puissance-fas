@@ -52,7 +52,7 @@ Ajoute le jeton d'un joueur sur le plateau
 */
 Plateau.prototype.addToken = (x, couleur) => {
     const height = this.getPlayerOneTokens()
-                    .concat(this.getPlayerOneTokens())
+                    .concat(this.getPlayerTwoTokens())
                     .filter(tok => tok.x === x)
                     .map(({y}) => y)
                     .sort()[0];
