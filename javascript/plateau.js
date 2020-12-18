@@ -23,8 +23,6 @@ class Plateau {
         }
     }
 
-    
-
     // Met à jour les colonnes jouables
     updatePlayable = () => {
         // Colonnes remplies par un token

@@ -14,11 +14,12 @@ function launch() {
         document.getElementById("playerInput").focus();
     } else {
         partie = new Partie(7,6);
+        console.log(partie);
     }
 }
 
-function play(x){
-	partie.uptadePlateau(x);
+function play(x) {
+	partie.updatePlateau(x);
 	uptadeToken();
 	arrowUpdate();
 }
@@ -27,47 +28,61 @@ function play(x){
 Ajoute l'image du jeton
 */
 function uptadeToken() {
-    playerOne=this.playerOneTokens;
-	playerTwo=this.playerTwoTokens;
-	var jetonRouge = "./images/jeton_rouge.svg";
-	var jetonJaune = "./images/jeton_jaune.svg";
+    reset();
+
+    let playerOne = partie.plateau.playerOneTokens;
+	let playerTwo = partie.plateau.playerTwoTokens;
+	let jetonRouge = "./images/jeton_rouge.svg";
+    let jetonJaune = "./images/jeton_jaune.svg";
+    
 	for (let i = 0; i < playerOne.length; i++){
 		ligne = playerOne[i].x ;
 		colonne = playerOne[i].y;
-		var td = document.getElementbyId("row"+String(ligne+1)+"_col"+String(colonne+1));
+		let td = document.getElementById("row"+String(ligne+1)+"_col"+String(colonne+1));
         if (td.innerHTML != '') {
             const image = document.createElement("img");
             image.src = jetonRouge;
+            image.className = "jeton_img"
             td.appendChild(image);
         }
 		
-	}
+    }
+    
 	for (let i = 0; i < playerTwo.length; i++){
 		ligne = playerTwo[i].x 
 		colonne = playerTwo[i].y
-		var td = document.getElementbyId("row"+String(ligne+1)+"_col"+String(colonne+1));
+		let td = document.getElementbyId("row"+String(ligne+1)+"_col"+String(colonne+1));
         if (td.innerHTML != '') {
             const image = document.createElement("img");
             image.src = jetonJaune;
+            image.className = "jeton_img"
             td.appendChild(image);
         }
 	}
+}
+
+function reset() {
+    let cells = document.getElementsByClassName("cell");
+    console.log(cells);
+    Array.prototype.forEach.call(cells, (cell) => {
+        cell.innerHTML = "";
+    });
 }
 
 /*
 Modifie l'état des flèches
 */
 function arrowUpdate(){
-	fleches = document.getElementsByClassName("arrow_img");
-	fleches.forEach(function(fleche){
-		if (partie.currentPlayer == 1){
+    fleches = document.getElementsByClassName("arrow_img");
+    Array.prototype.forEach.call(fleches, (fleche) => {
+        if (partie.currentPlayer == 1){
 			fleche.src = "down_arrow_rouge";
 		}
 		else {
 			fleche.src = "down_arrow_jaune";
 		}
 	  	fleche.disabled = true;
-	});
+    });
 
 	playable = partie.plateau.playableColumn;
 	playable.forEach(function(i){
