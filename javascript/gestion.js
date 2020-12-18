@@ -1,4 +1,5 @@
-var playerList = []
+var playerList = [];
+console.log("huitre");
 
 function updatePlayers(datalist){
 	datalist.innerHTML = '';
@@ -6,11 +7,13 @@ function updatePlayers(datalist){
 	for (player of playerList){
 		const option = document.createElement('option');
 		option.innerText = player;
-		datalist.appendChild(option)
+		datalist.appendChild(option);
 	}
 }
 
 var addPlayer = function (event) {
+
+	console.log("aaaa");
 
     if (event.type = "keydown"){
     	if (event.key == 'Enter'){
