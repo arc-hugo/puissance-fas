@@ -54,6 +54,12 @@ function uptadeToken () {
 function arrowUpdate(){
 	fleches = document.getElementsByClassName("arrow_img");
 	fleches.forEach(function(fleche){
+		if (partie.currentPlayer == 1){
+			fleche.src = "dow_arrow_rouge";
+		}
+		else {
+			fleche.src = "dow_arrow_jaune";
+		}
 	  	fleche.disabled = true;
 	}
 
