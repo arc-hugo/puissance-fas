@@ -68,3 +68,4 @@ function arrowUpdate(){
 	playable.forEach(function(i){
 	  	fleches[i].disabled = false;
 	}
+}
