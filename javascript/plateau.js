@@ -7,14 +7,15 @@ Classe du plateau de jeu
 - size_y : nombre de lignes du plateau
 */
 class Plateau {
-	constructor(x,y)
-    this.playerOneTokens = []
-    this.playerTwoTokens = []
-	this.size_x = x;
-    this.size_y = y;
-    this.playableColumn = []
-    for (let index = 0; index < size_x; index++) {
-        this.playableColumn.push(index);
+	constructor(x,y) {
+        this.playerOneTokens = []
+        this.playerTwoTokens = []
+	    this.size_x = x;
+        this.size_y = y;
+        this.playableColumn = []
+        for (let index = 0; index < size_x; index++) {
+            this.playableColumn.push(index);
+        }
     }
 }
 
