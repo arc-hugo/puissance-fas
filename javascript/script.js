@@ -17,6 +17,7 @@ function launch() {
         console.log(player_2.text);
         partie = new Partie(7,6);
         console.log(partie.plateau.playableColumn);
+        console.log(partie.checkWin(0,0))
     }
 }
 
@@ -28,7 +29,7 @@ function uptadeToken() {
 	playerTwo=this.playerTwoTokens;
 	var jetonRouge = "./images/jeton_rouge.svg";
 	var jetonJaune = "./images/jeton_jaune.svg";
-	for (let i = 0; i < playerOne.length  ){
+	for (let i = 0; i < playerOne.length; i++){
 		ligne = playerOne[i].x ;
 		colonne = playerOne[i].y;
 		var td = document.getElementbyId("row"+String(ligne+1)+"_col"+String(colonne+1));
@@ -39,7 +40,7 @@ function uptadeToken() {
         }
 		
 	}
-	for (let i = 0; i < playerTwo.length  ){
+	for (let i = 0; i < playerTwo.length; i++){
 		ligne = playerTwo[i].x 
 		colonne = playerTwo[i].y
 		var td = document.getElementbyId("row"+String(ligne+1)+"_col"+String(colonne+1));

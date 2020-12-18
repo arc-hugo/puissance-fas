@@ -8,10 +8,17 @@ class Partie {
 	    this.win = 0;
     }
 
-
-    //Renvoie le plateau
-    get plateau() {
-        return this.plateau;
+    /*
+        Joue le jeton du joueur actuel dans la colonne désignée
+        - x : colonne choisie 
+    */
+    play = (x) => {
+        this.plateau.addToken(x, currentPlayer);
+        if (this.currentPlayer === 1) {
+            this.currentPlayer = 2;
+        } else {
+            this.currentPlayer = 1;
+        }
     }
 
     /*
