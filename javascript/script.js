@@ -3,20 +3,12 @@ let player_2 = "";
 let partie = undefined;
 
 document.addEventListener("DOMContentLoaded", function() {
-<<<<<<< HEAD
  	arrow_list = document.getElementById("arrow_list");
 	for (let i = 0; i < 7; i++) {
         const arrow = document.createElement("td");
         arrow.id = "select_col"+String(i);
         arrow.className = "arrow_container";
         /*arrow.hidden = "true";*/
-=======
-    arrow_list = document.getElementById("arrow_list");
-    for (let i = 0; i < 7; i++) {
-       const arrow = document.createElement("td");
-       arrow.id = "select_col"+String(i);
-       arrow.className = "arrow_container";
->>>>>>> f184c60f6949dbfbc08b44cef7fa9defdd16ee98
 
        arrow_img = document.createElement("img");
        arrow_img.src = "./images/down_arrow.svg";
@@ -41,32 +33,32 @@ function launch() {
         console.log(partie);
         /*<td class = "arrow_container" id="select_col1" hidden="true" onclick="play(0)"><img class = "arrow_img" alt="select_col1"></td>*/
         fleches = document.getElementsByClassName("arrow_img");
+        console.log(fleches);
         let i = 0;
         Array.prototype.forEach.call(fleches, (fleche) => {
-            fleche.addEventListener("click", play(i));
-            i += 1;
+            fleche.onclick = (i) => {
+                partie.updatePlateau(i);
+                updateToken();
+                arrowUpdate();
+            }
+            i = i + 1;
         });
+        arrowUpdate();
     }
-}
-
-function play(x){
-    partie.updatePlateau(x);
-    uptadeToken();
-    arrowUpdate();
 }
 
 /*
 Ajoute l'image du jeton
 */
-function uptadeToken() {
+function updateToken() {
     reset();
 
     const playerOne = partie.plateau.playerOneTokens;
 	const playerTwo = partie.plateau.playerTwoTokens;
     
     for (let i = 0; i < playerOne.length; i++){
-        ligne = playerOne[i].x ;
-        colonne = playerOne[i].y;
+        let ligne = playerOne[i].x ;
+        let colonne = playerOne[i].y;
         let td = document.getElementById("row"+String(ligne+1)+"_col"+String(colonne+1));
         if (td.innerHTML != '') {
             const image = document.createElement("img");
@@ -78,8 +70,10 @@ function uptadeToken() {
     }
     
     for (let i = 0; i < playerTwo.length; i++){
-        ligne = playerTwo[i].x 
-        colonne = playerTwo[i].y
+        console.log(playerTwo)
+        let ligne = playerTwo[i].x 
+        let colonne = playerTwo[i].y
+        console.log("row"+String(ligne+1)+"_col"+String(colonne+1));
         let td = document.getElementById("row"+String(ligne+1)+"_col"+String(colonne+1));
         if (td.innerHTML != '') {
             const image = document.createElement("img");
@@ -94,7 +88,7 @@ function reset() {
     let cells = document.getElementsByClassName("cell");
     console.log(cells);
     Array.prototype.forEach.call(cells, (cell) => {
-        cell.innerHTML = "";
+        cell.innerHTML = " ";
     });
 }
 
