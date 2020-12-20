@@ -8,20 +8,28 @@ class Partie {
 	    this.win = 0;
     }
 
+    resetPlateau = (x,y) => {
+        delete this.plateau;
+        this.plateau = new Plateau(x,y);
+    }
     /*
         Joue le jeton du joueur actuel dans la colonne désignée
         - x : colonne choisie 
     */
     updatePlateau = (x) => {
         this.plateau.addToken(x, this.currentPlayer);
-        this.plateau.updatePlayable();
+        this.checkWin(x,this.plateau.last.y);
         if (this.currentPlayer === 1) {
             this.currentPlayer = 2;
         } else {
             this.currentPlayer = 1;
         }
+        if (this.win !== 0) {
+            this.plateau.playableColumn = [];
+        } else {
+            this.plateau.updatePlayable();
+        }
     }
-
     /*
         Vérifie si le jeton du joueur actuel est placé dans une ligne, colonne ou diagonale gagnante
         - x : coordonnées de la colonne du jeton à vérifier
@@ -36,13 +44,13 @@ class Partie {
         }
         
         // Récupération des lignes, colonnes et diagonales du jeton posé
-        const horizontal = tokens.filter(tok => tok.x === x);
-        const vertical = tokens.filter(tok => tok.y === y);
+        const horizontal = tokens.filter(tok => tok.y === y);
+        const vertical = tokens.filter(tok => tok.x === x);
         const diag1 = tokens.filter(tok => tok.x + tok.y === x + y);
         const diag2 = tokens.filter(tok => tok.x - tok.y === x - y);
         let count = 1;
-        let win = 0;
     
+        console.log(vertical);
         if (horizontal.length >= 4) {
             let select = horizontal.sort((a,b) => a.x - b.x).map(({x}) => x);
             for (let index = 0; index < select.length && count < 4; index++) {
@@ -53,7 +61,7 @@ class Partie {
                 }
             }
         }
-        if (vertical.length >= 4 && count !== 4) {
+        if (vertical.length >= 4 && count != 4) {
             count = 1;
             let select = vertical.sort((a,b) => a.y - b.y).map(({y}) => y);
             for (let index = 0; index < select.length && count < 4; index++) {
@@ -63,6 +71,7 @@ class Partie {
                     count = 1;
                 }
             }
+            console.log(count);
         }
         if (diag1.length >= 4 && count !== 4) {
             count = 1;
@@ -88,8 +97,7 @@ class Partie {
         }
     
         if (count === 4) {
-            win = this.currentPlayer;
+            this.win = this.currentPlayer;
         }
-        return win;
     }
 }
