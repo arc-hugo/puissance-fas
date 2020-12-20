@@ -3,20 +3,11 @@ let player_2 = "";
 let partie = undefined;
 
 document.addEventListener("DOMContentLoaded", function() {
-<<<<<<< HEAD
- 	arrow_list = document.getElementById("arrow_list");
-	for (let i = 0; i < 7; i++) {
-        const arrow = document.createElement("td");
-        arrow.id = "select_col"+String(i);
-        arrow.className = "arrow_container";
-        /*arrow.hidden = "true";*/
-=======
     arrow_list = document.getElementById("arrow_list");
     for (let i = 0; i < 7; i++) {
        const arrow = document.createElement("td");
        arrow.id = "select_col"+String(i);
        arrow.className = "arrow_container";
->>>>>>> f184c60f6949dbfbc08b44cef7fa9defdd16ee98
 
        arrow_img = document.createElement("img");
        arrow_img.src = "./images/down_arrow.svg";
