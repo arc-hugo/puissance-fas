@@ -8,7 +8,9 @@ class Partie {
 	    this.win = 0;
     }
 
-    resetPlateau = (x,y) => {
+    resetPartie = (x,y) => {
+        this.win = 0;
+        this.currentPlayer = 1;
         delete this.plateau;
         this.plateau = new Plateau(x,y);
     }

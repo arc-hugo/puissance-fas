@@ -34,9 +34,7 @@ function launch() {
         Array.prototype.forEach.call(cells, (cell) => {
             cell.innerHTML = " ";
         });
-        partie.win = 0;
-        partie.currentPlayer = 1;
-        partie.resetPlateau(7,6);
+        partie.resetPartie(7,6);
         arrowUpdate();
     } else {
         partie = new Partie(7,6);
