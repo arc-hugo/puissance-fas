@@ -12,6 +12,7 @@ class Plateau {
     playableColumn = [];
     size_x;
     size_y;
+    last = undefined;
     constructor(x,y) {
 	    this.size_x = x;
         this.size_y = y;
@@ -41,20 +42,21 @@ class Plateau {
                         .filter(tok => tok.x === x)
                         .map(({y}) => y)
                         .sort()[0];
+        
         if (height === undefined) {
+            this.last = {x: x, y: this.size_y-1};
             if (couleur === 1) {
-                this.playerOneTokens.push({x: x, y: this.size_y-1});
+                this.playerOneTokens.push(this.last);
             } else {
-                this.playerTwoTokens.push({x: x, y: this.size_y-1});
+                this.playerTwoTokens.push(this.last);
             }
         } else {
+            this.last = {x: x, y: height-1};
             if (couleur === 1) {
-                this.playerOneTokens.push({x: x, y: height-1});
+                this.playerOneTokens.push(this.last);
             } else {
-                this.playerTwoTokens.push({x: x, y: height-1});
+                this.playerTwoTokens.push(this.last);
             }   
         }
-        console.log(this.playerOneTokens);
-        console.log(this.playerTwoTokens);
     }
 }

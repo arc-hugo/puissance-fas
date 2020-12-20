@@ -1,5 +1,5 @@
-let player_1 = "";
-let player_2 = "";
+let player_1 = undefined;
+let player_2 = undefined;
 let partie = undefined;
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function launch() {
+
     let selected_1 = document.getElementById("player_1");
     let selected_2 = document.getElementById("player_2");
     
@@ -28,14 +29,27 @@ function launch() {
     if (player_1 === undefined) {
         console.error("Entrer un joueur");
         document.getElementById("playerInput").focus();
+    } else if (partie !== undefined) {
+        let cells = document.getElementsByClassName("cell");
+        Array.prototype.forEach.call(cells, (cell) => {
+            cell.innerHTML = " ";
+        });
+        partie.win = 0;
+        partie.currentPlayer = 1;
+        partie.resetPlateau(7,6);
+        arrowUpdate();
     } else {
         partie = new Partie(7,6);
+
         /*<td class = "arrow_container" id="select_col1" hidden="true" onclick="play(0)"><img class = "arrow_img" alt="select_col1"></td>*/
         fleches = document.getElementsByClassName("arrow_img");
         Array.prototype.forEach.call(fleches, (fleche, count) => {
             fleche.addEventListener("click", () => {
                 partie.updatePlateau(count);
                 updateToken(count, partie.currentPlayer);
+                if (partie.win !== 0) {
+                    displayWin();
+                }
                 arrowUpdate();
             });
         });
@@ -43,38 +57,33 @@ function launch() {
     }
 }
 
+function displayWin() {
+    const res = document.getElementById("result_list");
+    const gagnant = document.createElement("li");
+    if (partie.win === 1) {
+        alert("Le joueur "+player_1.text+" à gagné avec la couleur rouge !!!");
+        gagnant.innerHTML = player_1.text;
+    } else if (partie.win === 2) {
+        alert("Le joueur "+player_2.text+" à gagné avec la couleur jaune !!!");
+        gagnant.innerHTML = player_2.text;
+    }
+    res.appendChild(gagnant);
+}
+
 /*
 Ajoute l'image du jeton
 */
 function updateToken(x, couleur) {
 
-    let last = partie.plateau.playerOneTokens
-                .concat(partie.plateau.playerTwoTokens)
-                .filter(tok => tok.x === x)
-                .map(({y}) => y)
-                .sort()[0];
-    console.log(last);
-    let td = document.getElementById("row"+String(last+1)+"_col"+String(x+1));
-    console.log("row"+String(last+1)+"_col"+String(x+1));
-    if (td.innerHTML != '') {
-        const image = document.createElement("img");
-        if (couleur === 2) {
-            image.src = "./images/jeton_rouge.svg";
-        } else {
-            image.src = "./images/jeton_jaune.svg";
-        }     
-        image.className = "jeton_img";
-        td.appendChild(image);
-    }
-}
-
-function reset() {
-    let cells = document.getElementsByClassName("cell");
-    Array.prototype.forEach.call(cells, (cell) => {
-        cell.innerHTML = " ";
-    });
-    partie.plateau.playerOneTokens = [];
-    partie.plateau.playerTwoTokens = [];
+    let td = document.getElementById("row"+String(partie.plateau.last.y+1)+"_col"+String(x+1));
+    const image = document.createElement("img");
+    if (couleur === 2) {
+        image.src = "./images/jeton_rouge.svg";
+    } else {
+        image.src = "./images/jeton_jaune.svg";
+    }     
+    image.className = "jeton_img";
+    td.appendChild(image);
 }
 
 /*
@@ -88,12 +97,14 @@ function arrowUpdate(){
 		}
 		else {
 			fleche.src = "./images/down_arrow_jaune.svg";
-		}
-	  	fleche.disabled = true;
+        }
+        fleche.style.visibility = "hidden";
+	  	// fleche.disabled = true;
     });
 
 	playable = partie.plateau.playableColumn;
 	playable.forEach(function(i){
-	  	fleches[i].disabled = false;
+        fleches[i].style.visibility = "visible";
+	  	// fleches[i].disabled = false;
 	});
 }
