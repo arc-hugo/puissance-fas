@@ -59,10 +59,10 @@ function displayWin() {
     const res = document.getElementById("result_list");
     const gagnant = document.createElement("li");
     if (partie.win === 1) {
-        alert("Le joueur "+player_1.text+" à gagné avec la couleur rouge !!!");
+        alert("Le joueur "+player_1.text+" a gagné avec la couleur rouge !!!");
         gagnant.innerHTML = player_1.text;
     } else if (partie.win === 2) {
-        alert("Le joueur "+player_2.text+" à gagné avec la couleur jaune !!!");
+        alert("Le joueur "+player_2.text+" a gagné avec la couleur jaune !!!");
         gagnant.innerHTML = player_2.text;
     }
     res.appendChild(gagnant);
