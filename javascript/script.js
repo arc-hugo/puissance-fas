@@ -2,6 +2,21 @@ let player_1 = "";
 let player_2 = "";
 let partie = undefined;
 
+document.addEventListener("DOMContentLoaded", function() {
+    arrow_list = document.getElementById("arrow_list");
+    for (let i = 0; i < 7; i++) {
+       const arrow = document.createElement("td");
+       arrow.id = "select_col"+String(i);
+       arrow.className = "arrow_container";
+
+       arrow_img = document.createElement("img");
+       arrow_img.src = "./images/down_arrow.svg";
+       arrow_img.className = "arrow_img"
+       arrow.appendChild(arrow_img);
+       arrow_list.appendChild(arrow);
+   }
+});
+
 function launch() {
     let selected_1 = document.getElementById("player_1");
     let selected_2 = document.getElementById("player_2");
@@ -16,27 +31,13 @@ function launch() {
         partie = new Partie(7,6);
         console.log(partie);
         /*<td class = "arrow_container" id="select_col1" hidden="true" onclick="play(0)"><img class = "arrow_img" alt="select_col1"></td>*/
-        document.addEventListener("DOMContentLoaded", function() {
-            arrow_list = document.getElementById("arrow_list");
-           for (let i = 0; i < 7; i++) {
-               const arrow = document.createElement("td");
-               arrow.id = "select_col"+String(i);
-               arrow.className = "arrow_container";
-               arrow.hidden = "true";
-       
-               arrow_img = document.createElement("img");
-               arrow_img.src = "./images/down_arrow.svg";
-               arrow_img.className = "arrow_img"
-               arrow.appendChild(arrow_img);
-               arrow_list.appendChild(arrow);
-           }
-       });
+        fleches = document.getElementsByClassName("arrow_img");
+        let i = 0;
+        Array.prototype.forEach.call(fleches, (fleche) => {
+            fleche.addEventListener("click", play(i));
+            i += 1;
+        });
     }
-
-    fleches = document.getElementsByClassName("arrow_img");
-    fleches.forEach.call(function(fleche){
-	  	fleche.addEventListener("click", play(i));
-	});
 }
 
 function play(x){
