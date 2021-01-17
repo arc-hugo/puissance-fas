@@ -5,6 +5,7 @@ Classe du plateau de jeu
 - playable_column : liste des colonnes non remplies du plateau
 - size_x : nombre de colonnes du plateau
 - size_y : nombre de lignes du plateau
+- last : dernier jeton joué sur le plateau
 */
 class Plateau {
     playerOneTokens = [];
