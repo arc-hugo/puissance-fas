@@ -28,6 +28,6 @@ We choose to realise a game of **Connect Four** using HTML, CSS and JS.
 The whole code is registered on this repo.  
 
 ## Contributors
-[Hugo Barral](https://github.com/arc-hugo)  
+[Hugo](https://github.com/arc-hugo)  
 [HeineKayn](https://github.com/HeineKayn)  
 [leauhique](https://github.com/leauhique)
